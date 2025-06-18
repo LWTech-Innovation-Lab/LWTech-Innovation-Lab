@@ -1,0 +1,24 @@
+@startuml Level1_SystemContext
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context Diagram - Innovation Lab Print Management System
+
+Person(student, "Student", "Submits print jobs and monitors status")
+Person(staff, "Staff Member", "Administers system and manages devices")
+
+System(printSystem, "Innovation Lab Print Management System", "Handles remote project submissions, queue management, and device coordination")
+
+System_Ext(discord, "Discord", "Messaging platform for notifications and status queries")
+System_Ext(printers3d, "3D Printers", "Physical 3D printing devices")
+System_Ext(laserCutters, "Laser Cutters", "Physical laser cutting devices") 
+System_Ext(pcbPrinters, "PCB Printers", "Physical PCB fabrication devices")
+
+Rel(student, printSystem, "Uploads files via web interface")
+Rel(student, discord, "Queries status, receives notifications")
+Rel(staff, printSystem, "Administers system")
+Rel(printSystem, discord, "Sends notifications")
+Rel(printSystem, printers3d, "Controls via Raspberry Pi")
+Rel(printSystem, laserCutters, "Controls via Raspberry Pi")
+Rel(printSystem, pcbPrinters, "Controls via Raspberry Pi")
+
+@enduml

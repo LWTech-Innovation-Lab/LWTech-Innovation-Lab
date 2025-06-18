@@ -1,0 +1,39 @@
+@startuml Level3_Components_API
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Component Diagram - API Application
+
+Container(webApp, "Web Application", "React")
+Container(database, "Database", "PostgreSQL")
+Container(queueManager, "Queue Management Service")
+Container(fileStorage, "File Storage")
+
+Container_Boundary(apiApp, "API Application") {
+    Component(authController, "Authentication Controller", "Express.js/Flask", "Handles user login and session management")
+    Component(fileController, "File Upload Controller", "Express.js/Flask", "Processes file uploads and validation")
+    Component(jobController, "Job Management Controller", "Express.js/Flask", "Manages print job lifecycle")
+    Component(statusController, "Status Controller", "Express.js/Flask", "Provides job status and queue information")
+    Component(deviceController, "Device Controller", "Express.js/Flask", "Manages communication with Raspberry Pi devices")
+    
+    Component(fileValidator, "File Validator", "Custom Logic", "Validates file types and formats for different devices")
+    Component(priorityCalculator, "Priority Calculator", "Custom Logic", "Calculates job priority based on rules")
+    Component(notificationService, "Notification Service", "Custom Logic", "Sends notifications via Discord and other channels")
+}
+
+Rel(webApp, authController, "Authenticates", "JSON/HTTPS")
+Rel(webApp, fileController, "Uploads files", "Multipart/HTTPS")
+Rel(webApp, jobController, "Manages jobs", "JSON/HTTPS")
+Rel(webApp, statusController, "Gets status", "JSON/HTTPS")
+
+Rel(fileController, fileValidator, "Validates files")
+Rel(fileController, fileStorage, "Stores files")
+Rel(jobController, priorityCalculator, "Calculates priority")
+Rel(jobController, queueManager, "Queues jobs")
+Rel(statusController, database, "Queries status")
+Rel(deviceController, queueManager, "Communicates with")
+
+Rel(authController, database, "User authentication")
+Rel(jobController, database, "Job persistence")
+Rel(notificationService, database, "Status updates")
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml Level2_Containers
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container Diagram - Innovation Lab Print Management System
+
+Person(student, "Student")
+Person(staff, "Staff Member")
+System_Ext(discord, "Discord")
+
+System_Boundary(printSystem, "Innovation Lab Print Management System") {
+    Container(webApp, "Web Application", "React+TypeScript+Tailwind+Next.js", "Provides file upload interface and status dashboard")
+    Container(apiApp, "API Application", "Node.js+Typescript+Express", "Handles REST API requests, authentication, and business logic")
+    Container(database, "Database", "PostgreSQL", "Stores user data, job queue, and file metadata")
+    Container(queueManager, "Queue Management Service", "Python", "Manages print job prioritization and scheduling")
+    Container(discordBot, "Discord Bot", "Python+discord.py", "Handles Discord integration and notifications")
+    Container(fileStorage, "File Storage", "Local/Cloud Storage", "Stores uploaded project files")
+}
+
+System_Ext(raspberryPi, "Raspberry Pi Controllers", "Controls physical printing devices")
+
+Rel(student, webApp, "Uses", "HTTPS")
+Rel(student, discord, "Uses", "Discord API")
+Rel(staff, webApp, "Administers", "HTTPS")
+
+Rel(webApp, apiApp, "Makes API calls", "JSON/HTTPS")
+Rel(discordBot, discord, "Integrates with", "Discord API")
+Rel(discordBot, apiApp, "Queries status", "REST API")
+
+Rel(apiApp, database, "Reads/Writes", "SQL")
+Rel(apiApp, fileStorage, "Stores/Retrieves files")
+Rel(apiApp, queueManager, "Manages jobs")
+
+Rel(queueManager, database, "Updates job status", "SQL")
+Rel(queueManager, raspberryPi, "Sends print jobs", "HTTP/SSH")
+Rel(raspberryPi, queueManager, "Reports status", "HTTP")
+
+@enduml
