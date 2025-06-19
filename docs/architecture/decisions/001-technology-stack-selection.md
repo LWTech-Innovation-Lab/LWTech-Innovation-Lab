@@ -2,7 +2,7 @@
 
 ## Status
 
-Partial Approved (Frontend+Backend+Server stack Approved. Waiting for Discord Bot and Query logic approval)
+Approved
 
 ## Context
 
