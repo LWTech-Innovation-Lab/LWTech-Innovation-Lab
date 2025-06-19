@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Partial Approved (Frontend+Backend+Server stack Approved. Waiting for Discord Bot and Query logic approval)
 
 ## Context
 
@@ -94,7 +94,7 @@ The Innovation Lab Print Management System requires a technology stack that supp
 
 The recommended option is **Option B: Hybrid Stack** for the following reasons:
 
-1. **Critical Infrastructure Requirements**: Queue management and device control are core to our system's success. Python's mature ecosystem (Celery, asyncio, GPIO libraries) provides the most reliable foundation.
+1. **Critical Infrastructure Requirements**: Queue management and device control are core to the system's success. Python's mature ecosystem (Celery, asyncio, GPIO libraries) provides the most reliable foundation.
 
 2. **Type Safety Where It Counts**: TypeScript for frontend and API provides type safety at the most error-prone boundary (UI/backend communication) whilst allowing Python's strengths for infrastructure.
 
@@ -155,6 +155,6 @@ The recommended option is **Option B: Hybrid Stack** for the following reasons:
 ## Follow-up Decisions Required
 
 - ADR-002: Specific framework choices (Express vs Fastify, etc.)
-- ADR-003: Deployment and hosting strategy
-- ADR-004: API design patterns and versioning
-- ADR-005: Testing strategy across multiple languages
+- ADR-003: Database ORM/Query Builder selection (Prisma vs TypeORM vs raw SQL)
+- ADR-004: File storage strategy (local vs cloud)
+- ADR-005: Authentication and authorization approach

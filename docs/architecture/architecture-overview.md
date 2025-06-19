@@ -1,4 +1,4 @@
-# Architecture Report (6/18/2025)
+# Architecture Overview (6/18/2025)
 
 The user shall interface with a web app or the discord client where they shall be able to upload the files for their project. From there, all shall be handled programmatically from user submission to print starting.
 
