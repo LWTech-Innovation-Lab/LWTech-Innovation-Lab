@@ -29,7 +29,7 @@ Following ADR-001's decision on the hybrid technology stack, we need to select s
 
 ### API Framework (Node.js + TypeScript)
 
-#### Option A: Express.js + TypeScript
+#### **Option A: Express.js + TypeScript**
 
 **Pros:**
 
