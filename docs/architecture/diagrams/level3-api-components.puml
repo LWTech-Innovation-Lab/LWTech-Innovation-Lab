@@ -9,11 +9,11 @@ Container(queueManager, "Queue Management Service")
 Container(fileStorage, "File Storage")
 
 Container_Boundary(apiApp, "API Application") {
-    Component(authController, "Authentication Controller", "Express.js/Flask", "Handles user login and session management")
-    Component(fileController, "File Upload Controller", "Express.js/Flask", "Processes file uploads and validation")
-    Component(jobController, "Job Management Controller", "Express.js/Flask", "Manages print job lifecycle")
-    Component(statusController, "Status Controller", "Express.js/Flask", "Provides job status and queue information")
-    Component(deviceController, "Device Controller", "Express.js/Flask", "Manages communication with Raspberry Pi devices")
+    Component(authController, "Authentication Controller", "Fastify.js/Flask", "Handles user login and session management")
+    Component(fileController, "File Upload Controller", "Fastify.js/Flask", "Processes file uploads and validation")
+    Component(jobController, "Job Management Controller", "Fastify.js/Flask", "Manages print job lifecycle")
+    Component(statusController, "Status Controller", "Fastify.js/Flask", "Provides job status and queue information")
+    Component(deviceController, "Device Controller", "Fastify.js/Flask", "Manages communication with Raspberry Pi devices")
     
     Component(fileValidator, "File Validator", "Custom Logic", "Validates file types and formats for different devices")
     Component(priorityCalculator, "Priority Calculator", "Custom Logic", "Calculates job priority based on rules")

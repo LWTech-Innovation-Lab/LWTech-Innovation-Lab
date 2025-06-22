@@ -9,7 +9,7 @@ System_Ext(discord, "Discord")
 
 System_Boundary(printSystem, "Innovation Lab Print Management System") {
     Container(webApp, "Web Application", "React+TypeScript+Tailwind+Next.js", "Provides file upload interface and status dashboard")
-    Container(apiApp, "API Application", "Node.js+Typescript+Express", "Handles REST API requests, authentication, and business logic")
+    Container(apiApp, "API Application", "Node.js+Typescript+Fastify", "Handles REST API requests, authentication, and business logic")
     Container(database, "Database", "PostgreSQL", "Stores user data, job queue, and file metadata")
     Container(queueManager, "Queue Management Service", "Python", "Manages print job prioritization and scheduling")
     Container(discordBot, "Discord Bot", "Python+discord.py", "Handles Discord integration and notifications")
